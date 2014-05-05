@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "connect": "^3.0.0-rc.1",
-    "minimist": "0.0.8"
+    "minimist": "0.0.8",
+    "serve-static": "^1.0.3"
   }
 }

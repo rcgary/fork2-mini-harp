@@ -1,7 +1,9 @@
 var connect = require('connect')
   , serveStatic = require('serve-static')
+  , renderRoot = require('./lib/processor/root')
   , findJade = require('./lib/processor/jade')
-  , findLess = require('./lib/processor/less');
+  , findLess = require('./lib/processor/less')
+  , reject = require('./lib/processor/reject');
 
 module.exports = function(dir){
   var app = connect();
@@ -15,6 +17,8 @@ module.exports = function(dir){
     }
   });
 
+  app.use(reject);
+  app.use(renderRoot);
   app.use(serveStatic(dir));
   app.use(findJade(dir));
   app.use(findLess(dir));

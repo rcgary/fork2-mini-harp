@@ -1,6 +1,7 @@
 var connect = require('connect')
   , serveStatic = require('serve-static')
-  , findJade = require('./lib/processor/jade');
+  , findJade = require('./lib/processor/jade')
+  , findLess = require('./lib/processor/less');
 
 module.exports = function(dir){
   var app = connect();
@@ -16,6 +17,7 @@ module.exports = function(dir){
 
   app.use(serveStatic(dir));
   app.use(findJade(dir));
+  app.use(findLess(dir));
 
   return app;
 }
